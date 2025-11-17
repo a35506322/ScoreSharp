@@ -1,0 +1,10 @@
+global using System.ComponentModel.DataAnnotations;
+global using System.Reflection;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Options;
+global using Microsoft.OpenApi.Models;
+global using Novell.Directory.Ldap;
+global using ScoreSharp.Common.Helpers.UITCSecurity;
+global using ScoreSharp.LDAP.Models;
+global using ScoreSharp.LDAP.Options;
+global using ScoreSharp.LDAP.Services;

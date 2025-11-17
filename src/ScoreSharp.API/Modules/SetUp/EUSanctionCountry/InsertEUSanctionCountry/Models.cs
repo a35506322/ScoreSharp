@@ -1,0 +1,29 @@
+﻿namespace ScoreSharp.API.Modules.SetUp.EUSanctionCountry.InsertEUSanctionCountry;
+
+public class InsertEUSanctionCountryRequest
+{
+    /// <summary>
+    /// EU制裁國家代碼，範例 : TW
+    /// </summary>
+    [Display(Name = "EU制裁國家代碼")]
+    [RegularExpression(@"^[A-Z]+$")]
+    [MaxLength(5)]
+    [Required]
+    public string EUSanctionCountryCode { get; set; }
+
+    /// <summary>
+    /// EU制裁國家名稱
+    /// </summary>
+    [Display(Name = "EU制裁國家名稱")]
+    [MaxLength(50)]
+    [Required]
+    public string EUSanctionCountryName { get; set; }
+
+    /// <summary>
+    /// 是否啟用，Y | N
+    /// </summary>
+    [Display(Name = "是否啟用")]
+    [RegularExpression("[YN]")]
+    [Required]
+    public string IsActive { get; set; }
+}

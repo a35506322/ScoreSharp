@@ -1,0 +1,98 @@
+{
+  // 使用 IntelliSense 以得知可用的屬性。
+  // 暫留以檢視現有屬性的描述。
+  // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ScoreSharp.API.HTTPS",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build:api",
+      "program": "${workspaceFolder}/src/ScoreSharp.API/bin/Debug/net8.0/ScoreSharp.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/ScoreSharp.API",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "launchSettingsFilePath": "${workspaceFolder}/src/ScoreSharp.API/Properties/launchSettings.json",
+      "launchSettingsProfile": "https",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7259;http://localhost:5144"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "ScoreSharp.Middleware.HTTPS",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build:middleware",
+      "program": "${workspaceFolder}/src/ScoreSharp.Middleware/bin/Debug/net8.0/ScoreSharp.Middleware.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/ScoreSharp.Middleware",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "launchSettingsFilePath": "${workspaceFolder}/src/ScoreSharp.Middleware/Properties/launchSettings.json",
+      "launchSettingsProfile": "https",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7236;http://localhost:5067"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "ScoreSharp.PaperMW.HTTPS",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build:paper",
+      "program": "${workspaceFolder}/src/ScoreSharp.PaperMiddleware/bin/Debug/net8.0/ScoreSharp.PaperMiddleware.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/ScoreSharp.PaperMiddleware",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "launchSettingsFilePath": "${workspaceFolder}/src/ScoreSharp.PaperMiddleware/Properties/launchSettings.json",
+      "launchSettingsProfile": "https",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7159;http://localhost:5131"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": "ScoreSharp.Batch.HTTPS",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build:batch",
+      "program": "${workspaceFolder}/src/ScoreSharp.Batch/bin/Debug/net8.0/ScoreSharp.Batch.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/ScoreSharp.Batch",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "launchSettingsFilePath": "${workspaceFolder}/src/ScoreSharp.Batch/Properties/launchSettings.json",
+      "launchSettingsProfile": "https",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:7219;http://localhost:5121"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    }
+  ]
+}

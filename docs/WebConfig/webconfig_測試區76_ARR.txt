@@ -1,0 +1,39 @@
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rewriteMaps>
+        <rewriteMap name="MapProtocol">
+          <add key="on" value="https" />
+          <add key="off" value="http" />
+        </rewriteMap>
+      </rewriteMaps>
+      <rules>
+        <rule name="Set-X-Forwarded-Proto" stopProcessing="false">
+          <match url=".*" />
+          <conditions>
+                        <add input="{HTTP_X_FORWARDED_PROTO}" pattern="^https$" negate="true" />
+          </conditions>
+          <serverVariables>
+                        <set name="HTTP_X_FORWARDED_PROTO" value="{MapProtocol:{HTTPS}}" replace="false" />
+          </serverVariables>
+          <action type="None" />
+        </rule>
+        <rule name="Set-X-Forwarded-Host" stopProcessing="false">
+          <match url=".*" />
+          <conditions>
+                        <add input="{HTTP_X_FORWARDED_HOST}" pattern="." negate="true" />
+          </conditions>
+          <serverVariables>
+                        <set name="HTTP_X_FORWARDED_HOST" value="{HTTP_HOST}" replace="false" />
+          </serverVariables>
+          <action type="None" />
+        </rule>
+        <rule name="ARR_scoresharp_servers_loadBalance" stopProcessing="true">
+          <match url=".*" />
+          <action type="Rewrite" url="http://scoresharp_servers/{R:0}" appendQueryString="true" />
+        </rule>
+      </rules>
+    </rewrite>
+    <proxy enabled="true" />
+  </system.webServer>
+</configuration>

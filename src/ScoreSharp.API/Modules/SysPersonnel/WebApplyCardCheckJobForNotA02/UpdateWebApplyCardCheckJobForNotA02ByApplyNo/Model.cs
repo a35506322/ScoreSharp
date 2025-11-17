@@ -1,0 +1,156 @@
+﻿namespace ScoreSharp.API.Modules.SysPersonnel.WebApplyCardCheckJobForNotA02.UpdateWebApplyCardCheckJobForNotA02ByApplyNo;
+
+public class UpdateWebApplyCardCheckJobForNotA02ByApplyNoRequest
+{
+    /// <summary>
+    /// E-CARD申請書編號，
+    /// 對應 E-CARD = APPLY_NO
+    /// IDType = 空白= 金融小白，受理編號中會有 X
+    /// IDType = 存戶與卡友，受理編號中會有 B
+    ///
+    /// </summary>
+    public string ApplyNo { get; set; } = null!;
+
+    /// <summary>
+    /// 是否發查敦陽姓名檢核
+    ///
+    /// 需檢核_未完成 = 1
+    /// 需檢核_成功 = 2
+    /// 需檢核_失敗 = 3
+    /// 不需檢核 = 4
+    ///
+    /// </summary>
+    public CaseCheckStatus IsCheckName { get; set; }
+
+    /// <summary>
+    /// 查敦陽姓名檢核最後時間
+    /// </summary>
+    public DateTime? CheckNameLastTime { get; set; }
+
+    /// <summary>
+    /// 是否查詢分行資訊
+    /// </summary>
+    public CaseCheckStatus IsQueryBranchInfo { get; set; }
+
+    /// <summary>
+    /// 查詢分行資訊最後時間
+    /// </summary>
+    public DateTime? QueryBranchInfoLastTime { get; set; }
+
+    /// <summary>
+    /// 是否發查929，
+    /// </summary>
+    public CaseCheckStatus IsCheck929 { get; set; }
+
+    /// <summary>
+    /// 發查929最後時間
+    /// </summary>
+    public DateTime? Check929LastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢查相同IP
+    /// </summary>
+    public CaseCheckStatus IsCheckSameIP { get; set; }
+
+    /// <summary>
+    /// 檢查相同IP最後時間
+    /// </summary>
+    public DateTime? CheckSameIPLastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢查行內IP
+    /// </summary>
+    public CaseCheckStatus IsCheckEqualInternalIP { get; set; }
+
+    /// <summary>
+    /// 檢查行內IP最後時間
+    /// </summary>
+    public DateTime? CheckEqualInternalIPLastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢驗完畢，
+    /// 完成 = 1
+    /// 未完成 = 2
+    /// </summary>
+    public CaseCheckedStatus IsChecked { get; set; }
+
+    /// <summary>
+    /// 錯誤次數
+    /// - 預設 0
+    /// - 上述檢核有錯誤記一次
+    /// - 如果成功則變為0
+    /// - 達到錯誤2次不在執行,會寄信
+    ///
+    /// </summary>
+    public int ErrorCount { get; set; }
+
+    /// <summary>
+    /// 是否檢查相同網路件Email
+    /// </summary>
+    public CaseCheckStatus IsCheckSameWebCaseEmail { get; set; }
+
+    /// <summary>
+    /// 檢查相同網路件Email最後時間
+    /// </summary>
+    public DateTime? CheckSameWebCaseEmailLastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢查相同網路件手機
+    /// </summary>
+    public CaseCheckStatus IsCheckSameWebCaseMobile { get; set; }
+
+    /// <summary>
+    /// 檢查相同網路件手機最後時間
+    /// </summary>
+    public DateTime? CheckSameWebCaseMobileLastTime { get; set; }
+
+    /// <summary>
+    /// 是否發查關注名單
+    /// </summary>
+    public CaseCheckStatus IsCheckFocus { get; set; }
+
+    /// <summary>
+    /// 發查929最後時間
+    /// </summary>
+    public DateTime? CheckFocusLastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢查短時間ID相同
+    /// </summary>
+    public CaseCheckStatus IsCheckShortTimeID { get; set; }
+
+    /// <summary>
+    /// 檢查短時間ID相同最後時間
+    /// </summary>
+    public DateTime? CheckShortTimeIDLastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢核行內Email
+    /// </summary>
+    public CaseCheckStatus IsCheckInternalEmail { get; set; }
+
+    /// <summary>
+    /// 檢核行內Email最後時間
+    /// </summary>
+    public DateTime? CheckInternalEmailLastTime { get; set; }
+
+    /// <summary>
+    /// 是否發查行內手機重複
+    /// </summary>
+    public CaseCheckStatus IsCheckInternalMobile { get; set; }
+
+    /// <summary>
+    /// 發查行內手機重複最後時間
+    /// </summary>
+    public DateTime? CheckInternalMobileLastTime { get; set; }
+
+    /// <summary>
+    /// 是否檢查重覆進件
+    /// </summary>
+    public CaseCheckStatus IsCheckRepeatApply { get; set; }
+
+    /// <summary>
+    /// 檢查重覆進件最後時間
+    /// </summary>
+    public DateTime? CheckRepeatApplyLastTime { get; set; }
+}

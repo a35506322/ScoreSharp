@@ -1,0 +1,11 @@
+﻿global using System.ComponentModel.DataAnnotations;
+global using System.Data;
+global using System.Net;
+global using System.Security.Cryptography;
+global using System.Text;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
+global using Microsoft.Extensions.Logging;
+global using ScoreSharp.Common.Adapters.MW3.Models;
+global using ScoreSharp.Common.Extenstions._Enum;
+global using ScoreSharp.Common.Helpers.MW3Security;

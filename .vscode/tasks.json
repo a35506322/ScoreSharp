@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build:api",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/ScoreSharp.API/ScoreSharp.API.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build:batch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/ScoreSharp.Batch/ScoreSharp.Batch.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build:middleware",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/ScoreSharp.Middleware/ScoreSharp.Middleware.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build:paper",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/ScoreSharp.PaperMiddleware/ScoreSharp.PaperMiddleware.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

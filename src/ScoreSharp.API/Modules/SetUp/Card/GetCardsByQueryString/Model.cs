@@ -1,0 +1,216 @@
+﻿using ScoreSharp.API.Modules.SetUp.Card.GetCardById;
+
+namespace ScoreSharp.API.Modules.SetUp.Card.GetCardsByQueryString;
+
+public class GetCardsByQueryStringRequest
+{
+    /// <summary>
+    /// 卡片名稱
+    /// </summary>
+    [Display(Name = "卡片名稱")]
+    public string? CardName { get; set; }
+
+    /// <summary>
+    /// 是否啟用，Y | N
+    /// </summary>
+    [Display(Name = "是否啟用")]
+    public string? IsActive { get; set; }
+
+    /// <summary>
+    /// 排序
+    /// 1. CardCode
+    /// </summary>
+    [Display(Name = "排序")]
+    public string? OrderBy { get; set; }
+
+    /// <summary>
+    /// 卡片代碼
+    /// </summary>
+    [Display(Name = "卡片代碼")]
+    public string? CardCode { get; set; }
+}
+
+public class GetCardsByQueryStringResponse
+{
+    /// <summary>
+    /// BIN，長度8碼
+    /// </summary>
+    public string BINCode { get; set; } = null!;
+
+    /// <summary>
+    /// 卡片代碼，範例：JST65
+    /// </summary>
+    public string CardCode { get; set; } = null!;
+
+    /// <summary>
+    /// 卡片名稱
+    /// </summary>
+    public string CardName { get; set; } = null!;
+
+    /// <summary>
+    /// 卡片類別，一般發卡、國民現金卡、消、現金卡代償
+    /// </summary>
+    public CardCategory CardCategory { get; set; }
+
+    /// <summary>
+    /// 卡片類別名稱
+    /// </summary>
+    public string CardCategoryName { get; set; }
+
+    /// <summary>
+    /// 拒件函樣板，拒件函 (信用卡) 、拒件函 (消貸)、拒件函 (代償)
+    /// </summary>
+    public SampleRejectionLetter SampleRejectionLetter { get; set; }
+
+    /// <summary>
+    /// 拒件函樣板名稱
+    /// </summary>
+    public string SampleRejectionLetterName { get; set; }
+
+    /// <summary>
+    /// 預設帳單日，關聯 SetUp_BillDay
+    /// </summary>
+    public string DefaultBillDay { get; set; } = null!;
+
+    /// <summary>
+    /// 銷貸類別，0:代償、1:銷貸、2:其他
+    /// </summary>
+    public SaleLoanCategory SaleLoanCategory { get; set; }
+
+    /// <summary>
+    /// 銷貸類別名稱
+    /// </summary>
+    public string SaleLoanCategoryName { get; set; }
+
+    /// <summary>
+    /// 預設優惠辦法，關聯 SetUp_CardPromotion
+    /// </summary>
+    public DefaultCardPromotionDto DefaultDiscount { get; set; } = null!;
+
+    /// <summary>
+    /// 是否啟用，Y | N
+    /// </summary>
+    public string IsActive { get; set; } = null!;
+
+    /// <summary>
+    /// 主卡額度上限，範例：3000000
+    /// </summary>
+    public int PrimaryCardQuotaUpperlimit { get; set; }
+
+    /// <summary>
+    /// 主卡額度下限，範例：10000
+    /// </summary>
+    public int PrimaryCardQuotaLowerlimit { get; set; }
+
+    /// <summary>
+    /// 主卡年齡上限，範例：20
+    /// </summary>
+    public int PrimaryCardYearUpperlimit { get; set; }
+
+    /// <summary>
+    /// 主卡年齡下限，範例：99
+    /// </summary>
+    public int PrimaryCardYearLowerlimit { get; set; }
+
+    /// <summary>
+    /// 附卡額度上限，範例：3000000
+    /// </summary>
+    public int SupplementaryCardQuotaUpperlimit { get; set; }
+
+    /// <summary>
+    /// 附卡額度下限，範例：10000
+    /// </summary>
+    public int SupplementaryCardQuotaLowerlimit { get; set; }
+
+    /// <summary>
+    /// 附卡年齡上限，範例：20
+    /// </summary>
+    public int SupplementaryCardYearUpperlimit { get; set; }
+
+    /// <summary>
+    /// 附卡年齡下限，範例：99
+    /// </summary>
+    public int SupplementaryCardYearLowerlimit { get; set; }
+
+    /// <summary>
+    /// 是否不大於CARDPAC額度限制，Y | N
+    /// </summary>
+    public string IsCARDPAUnderLimit { get; set; } = null!;
+
+    /// <summary>
+    /// CARDPAC額度限制，20
+    /// </summary>
+    public int CARDPACQuotaLimit { get; set; }
+
+    /// <summary>
+    /// 不得申請辦附卡，Y | N，Y :  是不能申請
+    /// </summary>
+    public string IsApplyAdditionalCard { get; set; } = null!;
+
+    /// <summary>
+    /// 是否獨立卡別，Y | N
+    /// </summary>
+    public string IsIndependentCard { get; set; } = null!;
+
+    /// <summary>
+    /// 是否作IVR/CTI查詢，Y | N
+    /// </summary>
+    public string IsIVRvCTIQuery { get; set; } = null!;
+
+    /// <summary>
+    /// 國旅卡，Y | N
+    /// </summary>
+    public string IsCITSCard { get; set; } = null!;
+
+    /// <summary>
+    /// 快速發卡，Y | N
+    /// </summary>
+    public string IsQuickCardIssuance { get; set; } = null!;
+
+    /// <summary>
+    /// 票證功能，Y | N
+    /// </summary>
+    public string IsTicket { get; set; } = null!;
+
+    /// <summary>
+    /// 聯名集團，Y | N
+    /// </summary>
+    public string IsJointGroup { get; set; } = null!;
+
+    /// <summary>
+    /// 新增員工
+    /// </summary>
+    public string AddUserId { get; set; } = null!;
+
+    /// <summary>
+    /// 新增時間
+    /// </summary>
+    public DateTime AddTime { get; set; }
+
+    /// <summary>
+    /// 修正員工
+    /// </summary>
+    public string? UpdateUserId { get; set; }
+
+    /// <summary>
+    /// 修正時間
+    /// </summary>
+    public DateTime? UpdateTime { get; set; }
+
+    /// <summary>
+    /// 可選優惠辦法
+    /// </summary>
+    public List<OptionalCardPromotionsDto> OptionalCardPromotions { get; set; }
+}
+
+public class OptionalCardPromotionsDto
+{
+    public string CardPromotionCode { get; set; }
+    public string CardPromotionName { get; set; }
+}
+
+public class DefaultCardPromotionDto
+{
+    public string CardPromotionCode { get; set; }
+    public string CardPromotionName { get; set; }
+}

@@ -1,0 +1,254 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "ScoreSharpContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "MinimumProductVersion": "2.6.1186",
+   "ModelNamespace": null,
+   "OutputContextPath": "Infrastructures\/Data",
+   "OutputPath": "Infrastructures\/Data\/Entities",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "ScoreSharp.Batch",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[OrgSetUp_User]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OrgSetUp_UserOrgCaseSetUp]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[OrgSetUp_UserTakeVacation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Report_BatchReportDownload]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_ApplyCreditCardInfoFile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_ApplyCreditCardInfoHandle]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_ApplyCreditCardInfoMain]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_ApplyCreditCardInfoProcess]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_ApplyCreditCardInfoSupplementary]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_BankInternalSameLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_BankTrace]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_CaseStatistics]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_CheckTrace]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_FinanceCheckInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_OutsideBankInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_ReviewerSummary]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer_Stakeholder]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_929Log]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_BranchCusCAD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_BranchCusCD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_BranchCusCreditOver]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_BranchCusCusInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_BranchCusDD]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_BranchCusWMCust]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_FledLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_FrdIdLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_ImmiLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_KYCQueryLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_LayOffLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_MissingPersonsLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_NameCheckLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_PunishLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_RiskAccountLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_WarnCompLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviewer3rd_WarnLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReviewerLog_GuoLuKaCheckFail]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReviewerPedding_PaperApplyCardCheckJob]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReviewerPedding_WebApplyCardCheckJobForA02]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReviewerPedding_WebApplyCardCheckJobForNotA02]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReviewerPedding_WebRetryCase]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_AddressInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_AMLProfession]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_IDCardRenewalLocation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_InternalIP]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_SupplementReason]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_TemplateFixContent]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SetUp_WorkDay]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SysParamManage_BatchSet]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SysParamManage_MailSet]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SysParamManage_SysParam]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[System_ErrorLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[System_TmpRecord]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": true,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": true,
+   "UseT4Split": false
+}

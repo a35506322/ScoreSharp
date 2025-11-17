@@ -1,0 +1,1275 @@
+﻿@model ScoreSharp.RazorTemplate.Kyc.KYCStrongReDetail_20210501
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        line-height: 1.2;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      /* css reset end */
+      /* 螢幕預覽：維持 A4 比例，並避免超出視窗 */
+      .page {
+        box-sizing: border-box;
+        width: min(100%, 794px);
+        aspect-ratio: 210 / 297; /* A4 比例 */
+        margin: 16px auto;
+        background: #fff;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        padding: 0; /* 真正的頁邊距放 .page-content */
+      }
+
+      .page-content {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        padding: 1rem 1.5rem;
+
+        font-family: "標楷體", serif;
+        /* 順序：Windows → macOS → 其他系統用相近字體 */
+        font-size: 12pt; /* 建議用 pt，列印時比較精確 */
+        line-height: 1.6; /* 版面可讀性 */
+        position: relative;
+      }
+
+      .footer-text {
+        position: absolute;
+        font-size: 10px;
+        color: #8B8B8B;
+        right: 10px;
+        bottom: 0px;
+        text-align: right;
+      }
+
+      /* 列印設定：用實際公釐控制 */
+      @@page {
+        size: A4; /* 210mm x 297mm */
+        margin: 0mm 0mm; /* 由 .page-content 的 padding 當邊距 */
+      }
+
+      @@media print {
+        body {
+          margin: 0;
+          background: none;
+        }
+        .page {
+          width: 210mm; /* 列印用實尺寸 */
+          height: 297mm;
+          box-shadow: none;
+          margin: 0 auto;
+          break-after: always; /* 多頁時自動換頁 */
+        }
+      }
+
+      /* 手動強制換到下一張 A4 頁 */
+      .page-break {
+        break-before: page;
+      }
+
+     @@media print {
+        .page-break {
+          display: block;
+          height: 0;
+          margin: 0;
+          padding: 0;
+          break-before: page;
+        }
+      }
+
+      @@media screen {
+        .page {
+          width: min(100%, 794px);
+          aspect-ratio: 210/297;
+        }
+      }
+
+      @@media print {
+        .page {
+          width: 210mm;
+          height: 297mm;
+          aspect-ratio: auto;
+        }
+      }
+
+      .fw-bold {
+        font-weight: 700;
+      }
+
+      .fs-18 {
+        font-size: 18px;
+      }
+
+      .mt-1 {
+        margin-top: 0.25rem;
+      }
+
+      .mb-1 {
+        margin-bottom: 0.25rem;
+      }
+
+      .mb-1_2 {
+        margin-bottom: 0.3rem;
+      }
+
+      .mb-4 {
+        margin-bottom: 1rem;
+      }
+
+      .lh-1 {
+        line-height: 1;
+      }
+
+      .lh-1_5 {
+        line-height: 1.5;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .w-16 {
+        width: 16%;
+      }
+
+      .w-32 {
+        width: 32%;
+      }
+
+      .h1Title {
+        font-size: 24px;
+
+      }
+
+      .h2Title {
+        font-size: 20px;
+      }
+
+      .warning-text {
+        font-size: 16px;
+        color: red;
+        line-height: 1;
+        border-bottom: 1px solid red;
+      }
+
+      .text-red {
+        color: red;
+      }
+
+      .bg-yellow {
+        background-color: yellow;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .text-decoration-underline {
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      table td {
+        padding: 10px 12px;
+        vertical-align: top;
+      }
+
+      table td,
+      table th {
+        border: 1px solid #000;
+      }
+
+      .border-table {
+        border-collapse: collapse;
+        border-right: 5px solid black;
+        border-top: 6px solid black;
+        border-left: 7px solid black;
+        border-bottom: 6px solid black;
+        outline: 1px solid white;
+        outline-offset: -3px;
+      }
+
+
+      .bg-table-title {
+        background-color: rgb(231, 230, 230) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin: 0;
+        margin-right: 2px;
+        border-radius: 0px;
+      }
+
+      .confirm1-table .confirm1-checkbox input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        margin-right: 0;
+        margin-top: 2px;
+        border-radius: 0px;
+      }
+
+      #appointment-letter {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 0.3px solid red; /* 紅色外框 */
+        border-radius: 2px;
+        cursor: pointer;
+      }
+
+      #appointment-letter:checked {
+        background-color: red;
+      }
+
+      #appointment-letter:checked::after {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      .underline-text {
+        border-bottom: 1px solid black;
+        display: inline-block;
+        padding-bottom: 1px;
+      }
+
+      .multi-line-field {
+        position: relative;
+        min-height: 105px;
+        line-height: 20px;
+        padding: 0;
+        top: -2.5px;
+        width: 100%;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+      }
+
+      .multi-line-field::before {
+        content: "";
+        position: absolute;
+        top: 19px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #000;
+        box-shadow: 0 20px 0 #000, 0 40px 0 #000, 0 60px 0 #000, 0 80px 0 #000;
+      }
+
+      .multi-line-field2 {
+        position: relative;
+        min-height: 40px;
+        line-height: 20px;
+        padding: 0;
+        top: -2.5px;
+        width: 100%;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+      }
+
+      .multi-line-field2::before {
+        content: "";
+        position: absolute;
+        top: 19px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #000;
+        box-shadow: 0 20px 0 #000;
+      }
+    </style>
+
+</head>
+<body>
+    <div class="page">
+        <div class="page-content">
+            <h1 class="h1Title fw-bold text-center" style="line-height: 1;">加強審查執行表(自然人)</h1>
+            <p class="warning-text fw-bold text-center mb-1">*注意:此份表單應由本行承辦人員瞭解客戶親自審查、填寫，勿對客戶透漏任何有關其風險等級之資訊!</p>
+            <!-- 基本資料 -->
+            <table class="border-table">
+                <tbody>
+                    <tr>
+                        <td width="10%" class="bg-table-title text-center fw-bold" style="line-height: 1.3; padding: 4px 6px; vertical-align: middle;">所建立業務關係</td>
+                        <td colspan="3" style="padding: 3px 8px;">
+                            <div class="flex items-center flex-wrap">
+                                <div class="flex items-center w-16 mb-1_2">
+                                    <input type="checkbox" id="taiwan-deposit" @(Model?.基本資料?.所建立業務關係?.台幣存款 == true ? "checked" : "") />
+                                    <label for="taiwan-deposit" class="lh-1">台幣存款</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 14%;">
+                                    <input type="checkbox" id="safe-deposit-box" @(Model?.基本資料?.所建立業務關係?.保管箱 == true ? "checked" : "") />
+                                    <label for="safe-deposit-box" class="lh-1">保管箱</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2" style="width: 15%;">
+                                    <input type="checkbox" id="foreign-exchange-deposit" @(Model?.基本資料?.所建立業務關係?.外匯存款 == true ? "checked" : "") />
+                                    <label for="foreign-exchange-deposit" class="lh-1">外匯存款</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2" style="width: 17%;">
+                                    <input type="checkbox" id="corporate-finance" @(Model?.基本資料?.所建立業務關係?.企業金融 == true ? "checked" : "") />
+                                    <label for="corporate-finance" class="lh-1">企業金融</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2" style="width: 15%;">
+                                    <input type="checkbox" id="consumer-finance" @(Model?.基本資料?.所建立業務關係?.消費金融 == true ? "checked" : "") />
+                                    <label for="consumer-finance" class="lh-1">消費金融</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2">
+                                    <input type="checkbox" id="vehicle-loan" @(Model?.基本資料?.所建立業務關係?.車輛貸款 == true ? "checked" : "") />
+                                    <label for="vehicle-loan" class="lh-1">車輛貸款</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2">
+                                    <input type="checkbox" id="wealth-loan" @(Model?.基本資料?.所建立業務關係?.理財貸款 == true ? "checked" : "") />
+                                    <label for="wealth-loan" class="lh-1">理財貸款</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2" style="width: 14%;">
+                                    <input type="checkbox" id="bonds" @(Model?.基本資料?.所建立業務關係?.票債券 == true ? "checked" : "") />
+                                    <label for="bonds" class="lh-1">票債券</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2" style="width: 15%;"  >
+                                    <input type="checkbox" id="wealth-management" @(Model?.基本資料?.所建立業務關係?.財富管理 == true ? "checked" : "") />
+                                    <label for="wealth-management" class="lh-1">財富管理</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 17%;">
+                                    <input type="checkbox" id="trust" @(Model?.基本資料?.所建立業務關係?.信託 == true ? "checked" : "") />
+                                    <label for="trust" class="lh-1">信託</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2" style="width: 15%;">
+                                    <input type="checkbox" id="insurance" @(Model?.基本資料?.所建立業務關係?.保險 == true ? "checked" : "") />
+                                    <label for="insurance" class="lh-1">保險</label>
+                                </div>
+                                <div class="flex items-center w-16 mb-1_2">
+                                    <input type="checkbox" id="securities" @(Model?.基本資料?.所建立業務關係?.證券 == true ? "checked" : "") />
+                                    <label for="securities" class="lh-1">證券</label>
+                                </div>
+                                <div class="flex items-center w-16">
+                                    <input type="checkbox" id="futures-assistance" @(Model?.基本資料?.所建立業務關係?.期貨輔助 == true ? "checked" : "") />
+                                    <label for="futures-assistance" class="lh-1">期貨輔助</label>
+                                </div>
+                                <div class="flex items-center" style="width: 29%;">
+                                    <input type="checkbox" id="derivatives" @(Model?.基本資料?.所建立業務關係?.衍生性商品業務 == true ? "checked" : "") />
+                                    <label for="derivatives" class="lh-1">衍生性商品業務</label>
+                                </div>
+                                <div class="flex items-center" style="width: 17%;">
+                                    <input type="checkbox" id="forex-margin" @(Model?.基本資料?.所建立業務關係?.外匯保證金 == true ? "checked" : "") />
+                                    <label for="forex-margin" class="lh-1">外匯保證金</label>
+                                </div>
+                                <div class="flex items-center w-16" style="width: 15%;">
+                                    <input type="checkbox" id="digital-deposit" @(Model?.基本資料?.所建立業務關係?.數位存款 == true ? "checked" : "") />
+                                    <label for="digital-deposit" class="lh-1">數位存款</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="credit-card" @(Model?.基本資料?.所建立業務關係?.信用卡業務 == true ? "checked" : "") />
+                                    <label for="credit-card" class="lh-1">
+                                        信用卡業務
+                                    </label>
+                                </div>
+                                <span class="fw-bold">［可複</span>
+                                <span class="fw-bold">選］</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%" class="text-center fw-bold bg-table-title" style="vertical-align: middle;">ID</td>
+                        <td width="25%">@Model?.基本資料?.ID</td>
+                        <td width="9%" class="text-center fw-bold bg-table-title" style="vertical-align: middle;">姓名</td>
+                        <td>@Model?.基本資料?.姓名</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-center fw-bold bg-table-title" style="padding-top: 5px; padding-bottom: 5px; vertical-align: middle;">客戶風險等級</td>
+                        <td colspan="2" style="padding-top: 4px; padding-bottom: 4px; vertical-align: middle;">
+                            <div class="flex items-center">
+                                <div class="flex items-center w-32">
+                                    <input type="checkbox" id="high-risk" @(Model?.基本資料?.客戶風險等級?.Contains("H") == true ? "checked" : "") />
+                                    <label for="high-risk" class="lh-1">高風險(H)</label>
+                                </div>
+                                <div class="flex items-center w-32">
+                                    <input type="checkbox" id="medium-risk" @(Model?.基本資料?.客戶風險等級?.Contains("M") == true ? "checked" : "") />
+                                    <label for="medium-risk" class="lh-1">中風險(M)</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 壹、 確認客戶身分加強審查事項(中、高風險客戶填寫) -->
+            <h2 class="h2Title fw-bold lh-1_5" style="margin-left: 2px;">壹、 確認客戶身分加強審查事項(<span class="text-red text-decoration-underline">中、高風險客戶</span>填寫)</h2>
+            <table class="border-table confirm1-table">
+                <tbody>
+                    <tr>
+                        <td width="14%" rowspan="6" class="bg-table-title" style="padding-left: 0px; padding-right: 0px;vertical-align: middle;">
+                            客戶基本資料驗證
+                            <span class="text-red" style="display: block;">※應擇<span style="display: block; margin-left: 8px;">ABCDEF任一方式進行驗證</span></span>
+                        </td>
+                        <td width="21%" class="confirm1-checkbox">
+                            <div class="flex items-start lh-1_5">
+                                <input type="checkbox" id="a" class="mt-1" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.A客戶曾使用之姓名或別名?.是否選擇 == true ? "checked" : "") />
+                                <label for="a">
+                                    A 客戶曾使用之
+                                    <span style="display: block; margin-left: 25px;">姓名或別名</span>
+                                </label>
+                            </div>
+                        </td>
+                        <td width="65%" style="padding: 0px;">
+                            <p>客戶名稱曾有異動；客戶舊名稱為：<span class="underline-text" style="min-width: 160px">@(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.A客戶曾使用之姓名或別名?.客戶舊名稱)</span>(必填)</p>
+                            <p>舊名稱已完成姓名檢核作業(參考號碼:<span class="underline-text" style="min-width: 180px">@Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.A客戶曾使用之姓名或別名?.參考號碼</span>)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%" class="confirm1-checkbox" style="padding: 2px 12px;">
+                            <div class="flex items-start lh-1_5">
+                                <input type="checkbox" id="b" class="mt-1" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.B電話照會?.是否選擇 == true ? "checked" : "") />
+                                <label for="b">B 電話照會</label>
+                            </div>
+                        </td>
+                        <td width="65%" style="padding: 4px 0px;">
+                            <p>連絡電話:<span class="underline-text" style="min-width: 180px">@(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.B電話照會?.連絡電話)</span>(住家/任職機構/行動電話)</p>
+                            <div class="flex items-center">
+                                驗證結果：
+                                <div class="flex items-center" style="width: 20%;">
+                                    <input type="checkbox" id="phone-verified" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.B電話照會?.驗證結果 == "已照會" ? "checked" : "") />
+                                    <label for="phone-verified" class="lh-1">已照會</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="phone-not-verified" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.B電話照會?.驗證結果 == "聯絡未果" ? "checked" : "") />
+                                    <label for="phone-not-verified" class="lh-1">聯絡未果(需驗證 C 或 D 或 E)</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%" class="confirm1-checkbox" style="padding: 2px 12px;">
+                            <div class="flex items-start lh-1_5">
+                                <input type="checkbox" id="c" class="mt-1" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.C郵件驗證?.是否選擇 == true ? "checked" : "") />
+                                <label for="c">
+                                    C 郵件驗證<br />(取得回函)
+                                </label>
+                            </div>
+                        </td>
+                        <td width="65%" style="padding: 4px 0px;">
+                            <p>郵件寄送地址:<span class="underline-text" style="min-width: 75%">@Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.C郵件驗證?.郵件寄送地址</span></p>
+                            <div class="flex items-center">
+                                驗證結果：
+                                <div class="flex items-center" style="width: 20%;">
+                                    <input type="checkbox" id="mail-verified" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.C郵件驗證?.驗證結果 == "已回函" ? "checked" : "") />
+                                    <label for="mail-verified" class="lh-1">已回函</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="mail-not-verified" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.C郵件驗證?.驗證結果 == "未回函" ? "checked" : "") />
+                                    <label for="mail-not-verified" class="lh-1">未回函(需驗證 B 或 D 或 E)</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%" class="confirm1-checkbox" style="padding: 0px;">
+                            <div class="flex items-start lh-1_5" style="padding: 2px 12px;">
+                                <input type="checkbox" id="d" class="mt-1" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.D任職機構驗證?.是否選擇 == true ? "checked" : "") />
+                                <label for="d">
+                                    D 任職機構驗證
+                                </label>
+                            </div>
+                            <p style="font-size: 15px;">(查詢「商工登記公示資料查詢服務」網頁)</p>
+                        </td>
+                        <td width="65%" style="padding: 4px 0px;vertical-align: middle;">
+                            <p>是否存續中</p>
+                            <div class="flex items-center">
+                                驗證結果：
+                                <div class="flex items-center" style="width: 12%;">
+                                    <input type="checkbox" id="company-exists" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.D任職機構驗證?.驗證結果 == "是" ? "checked" : "") />
+                                    <label for="company-exists" class="lh-1">是</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="company-not-exists" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.D任職機構驗證?.驗證結果 == "否" ? "checked" : "") />
+                                    <label for="company-not-exists" class="lh-1">否(需驗證 B 或 C 或 E)</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%" class="confirm1-checkbox" style="padding: 2px 12px;">
+                            <div class="flex items-start lh-1_5">
+                                <input type="checkbox" id="e" class="mt-1" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.是否選擇 == true ? "checked" : "") />
+                                <label for="e">E 實地訪查</label>
+                            </div>
+                        </td>
+                        <td width="65%" style="padding: 0px;">
+                            <p>實地訪查地址:  <span class="underline-text" style="min-width: 75%">@Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.實地訪查地址</span></p>
+                            <p>實地訪查日期：
+                                @if(!String.IsNullOrEmpty(@Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.實地訪查日期))
+                                {
+                                    var dates = @Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.實地訪查日期.Split('/');
+                                    <span class="underline-text" style="min-width: 70px">@dates[0]</span>
+                                    <span>/</span>
+                                    <span class="underline-text" style="min-width: 70px">@dates[1]</span>
+                                    <span>/</span>
+                                    <span class="underline-text" style="min-width: 70px">@dates[2]</span>
+                                }
+                                else
+                                {
+                                    <span class="underline-text" style="min-width: 70px"></span>
+                                    <span>/</span>
+                                    <span class="underline-text" style="min-width: 70px"></span>
+                                    <span>/</span>
+                                    <span class="underline-text" style="min-width: 70px"></span>
+                                }
+                            </p>
+                            驗證結果：
+                            <div class="flex items-center mb-1">
+                                <input type="checkbox" id="site-visit-consistent" style="margin-left: 1px;" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.驗證結果?.與客戶填寫資料一致 == "是" ? "checked" : "") />
+                                <label for="site-visit-consistent" class="lh-1">與客戶填寫資料一致</label>
+                            </div>
+                            <div class="flex items-center mb-1">
+                                <input type="checkbox" id="site-visit-inconsistent" style="margin-left: 1px;" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.驗證結果?.與客戶填寫資料一致 == "否"? "checked" : "") />
+                                <label for="site-visit-inconsistent" class="lh-1">與客戶填寫資料不一致，原因：
+                                    <span class="underline-text" style="min-width: 210px">@Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查?.驗證結果?.與客戶填寫資料不一致原因</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <p style="margin-left: 18px; margin-right: 13px;">是否合理</p>
+                                <div class="flex items-center" style="width: 10%;">
+                                    <input type="checkbox" id="high-risk" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查.驗證結果.驗證結果是否合理 == "是" ? "checked" : "")/>
+                                    <label for="high-risk" class="lh-1">是</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="medium-risk"  @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.E實地訪查.驗證結果.驗證結果是否合理 == "否" ? "checked" : "")/>
+                                    <label for="medium-risk" class="lh-1">否<span class="text-red fw-bold">(應婉拒建立業務關係)</span></label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="21%" class="confirm1-checkbox" style="padding: 2px 12px;">
+                            <div class="flex items-start lh-1_5">
+                                <input type="checkbox" id="f" class="mt-1" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.F聯徵資料?.是否選擇 == true ? "checked" : "") />
+                                <label for="f">F聯徵資料</label>
+                            </div>
+                            <p>(限信用卡業務)</p>
+                        </td>
+                        <td width="65%" style="padding: 0px;">
+                            <p>是否遭通報列為警示帳戶</p>
+                            <div class="flex items-center mb-1">
+                                <input type="checkbox" id="credit-alert-no" style="margin-left: 1px;" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.F聯徵資料?.驗證結果 == "否" ? "checked" : "") />
+                                <label for="credit-alert-no" class="lh-1">否</label>
+                            </div>
+                            <div class="flex items-center mb-1">
+                                <input type="checkbox" id="credit-alert-yes" style="margin-left: 1px;" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.F聯徵資料?.驗證結果 == "是" ? "checked" : "") />
+                                <label for="credit-alert-yes" class="lh-1">是，原因：
+                                    <span class="underline-text" style="min-width: 370px">@Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.F聯徵資料?.聯徵資料遭通報列為警示帳戶原因</span>
+                                </label>
+                            </div>
+                            <div class="flex items-center">
+                                <p style="margin-left: 18px; margin-right: 13px;">是否合理</p>
+                                <div class="flex items-center" style="width: 10%;">
+                                    <input type="checkbox" id="high-risk"   @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.F聯徵資料?.驗證結果是否合理 == "是" ? "checked" : "")/>
+                                    <label for="high-risk" class="lh-1">是</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="medium-risk" @(Model?.壹確認客戶身分加強審查事項中高風險客戶填寫?.F聯徵資料?.驗證結果是否合理 == "否" ? "checked" : "")/>
+                                    <label for="medium-risk" class="lh-1">否<span class="text-red fw-bold">(應婉拒建立業務關係)</span></label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 貳、 確認客戶身分加強審查事項(高風險客戶填寫及資料驗證) -->
+            <h2 class="h2Title fw-bold lh-1_5" style="margin-left: 2px;">貳、 確認客戶身分加強審查事項(<span class="text-red text-decoration-underline">高風險客戶</span>填寫及資料驗證)</h2>
+            <table class="border-table">
+                <tbody>
+                    <tr>
+                        <td width="14%" class="bg-table-title fw-bold text-center" style="padding-left: 4px; padding-right: 4px; vertical-align: middle;border-bottom: 0;">
+                            一、了解客戶財富及資金來源
+                        </td>
+                        <td width="86%" colspan="4" style="padding: 6px 2px;">
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="employment-income" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.就業所得?.是否選擇 == true ? "checked" : "") />
+                                <label for="employment-income" class="lh-1 fw-bold">就業所得:</label>
+                            </div>
+                            <div class="flex items-center mb-1_2" style="margin-left: 38px;">
+                                <div class="flex items-center" style="width: 26%;">
+                                    <input type="checkbox" id="business-income" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.就業所得?.選項?.經營事業收入 == true ? "checked" : "") />
+                                    <label for="business-income" class="lh-1">經營事業收入</label>
+                                </div>
+                                <div class="flex items-center" style="width: 20%;">
+                                    <input type="checkbox" id="salary-income" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.就業所得?.選項?.薪資所得 == true ? "checked" : "") />
+                                    <label for="salary-income" class="lh-1">薪資所得</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="employment-income-other" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.就業所得?.選項?.其他 == true ? "checked" : "") />
+                                    <label for="employment-income-other" class="lh-1">其他：
+                                        <span class="underline-text" style="min-width: 180px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.就業所得?.其他)</span>(必填)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="investment-income" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.是否選擇 == true ? "checked" : "") />
+                                <label for="investment-income" class="lh-1 fw-bold">理財投資-投資:</label>
+                            </div>
+                            <div class="flex items-center flex-wrap mb-1_2" style="margin-left: 38px; width: calc(100% - 38px);">
+                                <div class="flex items-center mb-1_2" style="width: 25%;">
+                                    <input type="checkbox" id="securities-investment" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.股票有價證券 == true ? "checked" : "") />
+                                    <label for="securities-investment" class="lh-1">股票/有價證券</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 18%;">
+                                    <input type="checkbox" id="real-estate-investment" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.房地產 == true ? "checked" : "") />
+                                    <label for="real-estate-investment" class="lh-1">房地產</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 16%;">
+                                    <input type="checkbox" id="precious-metals" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.貴金屬 == true ? "checked" : "") />
+                                    <label for="precious-metals" class="lh-1">貴金屬</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 13.5%;">
+                                    <input type="checkbox" id="funds" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.基金 == true ? "checked" : "") />
+                                    <label for="funds" class="lh-1">基金</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 13.5%;">
+                                    <input type="checkbox" id="futures" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.期貨 == true ? "checked" : "") />
+                                    <label for="futures" class="lh-1">期貨</label>
+                                </div>
+                                <div class="flex items-center mb-1_2" style="width: 13.5%;">
+                                    <input type="checkbox" id="insurance-investment" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.保險 == true ? "checked" : "") />
+                                    <label for="insurance-investment" class="lh-1">保險</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="investment-other" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.選項?.其他 == true ? "checked" : "") />
+                                    <label for="investment-other" class="lh-1">其他：
+                                        <span class="underline-text" style="min-width: 280px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.理財投資投資?.其他)</span>(必填)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="rental-income" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.是否選擇 == true ? "checked" : "") />
+                                <label for="rental-income" class="lh-1 fw-bold">租金收入-出租:</label>
+                            </div>
+                            <div class="flex items-center mb-1_2" style="margin-left: 38px;">
+                                <div class="flex items-center" style="width: 15%;">
+                                    <input type="checkbox" id="house-rental" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.選項?.房屋 == true ? "checked" : "") />
+                                    <label for="house-rental" class="lh-1">房屋</label>
+                                </div>
+                                <div class="flex items-center" style="width: 15%;">
+                                    <input type="checkbox" id="shop-rental" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.選項?.店鋪 == true ? "checked" : "") />
+                                    <label for="shop-rental" class="lh-1">店鋪</label>
+                                </div>
+                                <div class="flex items-center" style="width: 15%;">
+                                    <input type="checkbox" id="signboard-rental" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.選項?.招牌 == true ? "checked" : "") />
+                                    <label for="signboard-rental" class="lh-1">招牌</label>
+                                </div>
+                                <div class="flex items-center" style="width: 15%;">
+                                    <input type="checkbox" id="vehicle-rental" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.選項?.車輛 == true ? "checked" : "") />
+                                    <label for="vehicle-rental" class="lh-1">車輛</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="rental-other" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.選項?.其他 == true ? "checked" : "") />
+                                    <label for="rental-other" class="lh-1">其他：
+                                        <span class="underline-text" style="min-width: 105px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.租金收入出租?.其他)</span>(必填)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="professional-income" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.專案執業收入?.是否選擇 == true ? "checked" : "") />
+                                <label for="professional-income" class="lh-1 fw-bold">專案執業收入:</label>
+                            </div>
+                            <div class="flex items-center mb-1_2" style="margin-left: 38px;">
+                                <div class="flex items-center" style="width: 17%;">
+                                    <input type="checkbox" id="legal-profession" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.專案執業收入?.選項?.法律 == true ? "checked" : "") />
+                                    <label for="legal-profession" class="lh-1">法律</label>
+                                </div>
+                                <div class="flex items-center" style="width: 17%;">
+                                    <input type="checkbox" id="accounting-profession" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.專案執業收入?.選項?.會計 == true ? "checked" : "") />
+                                    <label for="accounting-profession" class="lh-1">會計</label>
+                                </div>
+                                <div class="flex items-center" style="width: 17%;">
+                                    <input type="checkbox" id="planning-profession" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.專案執業收入?.選項?.企劃 == true ? "checked" : "") />
+                                    <label for="planning-profession" class="lh-1">企劃</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="professional-other" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.專案執業收入?.選項?.其他 == true ? "checked" : "") />
+                                    <label for="professional-other" class="lh-1">其他：
+                                        <span class="underline-text" style="min-width: 160px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.專案執業收入?.其他)</span>(必填)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="inheritance-gift" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.繼承贈與?.是否選擇 == true ? "checked" : "") />
+                                <label for="inheritance-gift" class="lh-1 fw-bold">繼承/贈與:</label>
+                            </div>
+                            <div class="flex items-center mb-1_2" style="margin-left: 38px;">
+                                <div class="flex items-center" style="width: 24%;">
+                                    <input type="checkbox" id="grandparents" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.繼承贈與?.選項?.內外祖父母 == true ? "checked" : "") />
+                                    <label for="grandparents" class="lh-1">(內/外)祖父母</label>
+                                </div>
+                                <div class="flex items-center" style="width: 14%;">
+                                    <input type="checkbox" id="parents" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.繼承贈與?.選項?.父母 == true ? "checked" : "") />
+                                    <label for="parents" class="lh-1">父母</label>
+                                </div>
+                                <div class="flex items-center" style="width: 17%;">
+                                    <input type="checkbox" id="siblings" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.繼承贈與?.選項?.兄弟姊妹 == true ? "checked" : "") />
+                                    <label for="siblings" class="lh-1">兄弟姊妹</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="inheritance-other" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.繼承贈與?.選項?.其他 == true ? "checked" : "") />
+                                    <label for="inheritance-other" class="lh-1">其他：
+                                        <span class="underline-text" style="min-width: 135px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.繼承贈與?.其他)</span>(必填)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="pension" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.退休金?.是否選擇 == true ? "checked" : "") />
+                                <label for="pension" class="lh-1 fw-bold">退休金:</label>
+                            </div>
+                            <div class="flex items-center mb-1_2" style="margin-left: 38px;">
+                                <div class="flex items-center" style="width: 38%;">
+                                    <input type="checkbox" id="government-pension" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.退休金?.選項?.軍公教國營事業退休 == true ? "checked" : "") />
+                                    <label for="government-pension" class="lh-1">軍公教/國營事業退休</label>
+                                </div>
+                                <div class="flex items-center" style="width: 14%;">
+                                    <input type="checkbox" id="private-pension" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.退休金?.選項?.民營機構 == true ? "checked" : "") />
+                                    <label for="private-pension" class="lh-1">民營機構</label>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-1_2">
+                                <input type="checkbox" id="idle-funds" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.閒置資金?.是否選擇 == true ? "checked" : "") />
+                                <label for="idle-funds" class="lh-1 fw-bold">閒置資金:</label>
+                            </div>
+                            <div class="flex items-center mb-1_2" style="margin-left: 38px;">
+                                <div class="flex items-center" style="width: 24%;">
+                                    <input type="checkbox" id="real-estate-sale" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.閒置資金?.選項?.出售不動產 == true ? "checked" : "") />
+                                    <label for="real-estate-sale" class="lh-1">出售不動產</label>
+                                </div>
+                                <div class="flex items-center" style="width: 14%;">
+                                    <input type="checkbox" id="movable-property" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.閒置資金?.選項?.動產 == true ? "checked" : "") />
+                                    <label for="movable-property" class="lh-1">動產</label>
+                                </div>
+                                <div class="flex items-center" style="width: 17%;">
+                                    <input type="checkbox" id="deposits" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.閒置資金?.選項?.存款 == true ? "checked" : "") />
+                                    <label for="deposits" class="lh-1">存款</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="idle-funds-other" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.閒置資金?.選項?.其他 == true ? "checked" : "") />
+                                    <label for="idle-funds-other" class="lh-1">其他：
+                                        <span class="underline-text" style="min-width: 125px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.閒置資金?.其他)</span>(必填)
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-text">03-05-F02新建立業務關係/加開帳戶加強審查執行表-自然人110.05版</div>
+    </div>
+    <div class="page">
+        <div class="page-content">
+        <table class="border-table">
+            <tbody>
+            <tr>
+              <td
+                rowspan="5"
+                width="14%"
+                class="bg-table-title fw-bold text-center"
+                style="
+                  padding-left: 4px;
+                  padding-right: 4px;
+                  vertical-align: middle;
+                  border-bottom: 0;
+                "
+              >
+                一、了解客戶財富及資金來源
+              </td>
+              <td width="86%" colspan="4" style="padding: 6px 2px">
+                <div class="flex items-center">
+                    <input type="checkbox" id="other-income-source" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.其他?.是否選擇 == true ? "checked" : "") />
+                    <label for="other-income-source" class="lh-1" style="flex-grow: 1;">
+                        <span class="fw-bold">其他，說明：</span>
+                        <span class="underline-text" style="min-width: 460px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.所得來源?.其他?.說明)</span>(必填)
+                    </label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-red bg-table-title" style="padding: 0px;">
+                        ※應瞭解客戶財富及資金來源，若依其性質無法以「文件驗證」者，請於「非文件驗證」簡述說明客戶之身分背景、資金來源等資訊，並判斷其財富及資金來源是否合理。
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-table-title fw-bold text-center" width="7.5%" style="padding-left: 4px; padding-right: 4px; vertical-align: middle;">文件驗證</td>
+                <td style="padding: 2px;" colspan="3">
+                    <div class="flex items-center mb-1">
+                        以
+                        <div class="flex items-center" style="width: 16%;">
+                            <input type="checkbox" id="client-provided" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.來源?.Contains("客戶提供") == true ? "checked" : "") />
+                            <label for="client-provided" class="lh-1">客戶提供</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="bank-internal-external" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.來源?.Contains("本行由內/外部機構") == true? "checked" : "") />
+                            <label for="bank-internal-external" class="lh-1">本行由內/外部機構</label>
+                        </div>
+                        ，可查詢之文件進行驗證：
+                    </div>
+                    <div class="flex justify-between items-center flex-wrap mb-1">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="tax-withholding-certificate" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.各類所得扣繳稅額報繳證明 == true ? "checked" : "") />
+                            <label for="tax-withholding-certificate" class="lh-1">各類所得扣繳稅額報繳證明</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="payroll-slip" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.薪資單 == true ? "checked" : "") />
+                            <label for="payroll-slip" class="lh-1">薪資單</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="annual-financial-report" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.年報或財報 == true ? "checked" : "") />
+                            <label for="annual-financial-report" class="lh-1">年報或財報</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="contract" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.合約 == true ? "checked" : "") />
+                            <label for="contract" class="lh-1">合約</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="invoice" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.發票 == true ? "checked" : "") />
+                            <label for="invoice" class="lh-1">發票</label>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center flex-wrap mb-1">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="receipt" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.收據 == true ? "checked" : "") />
+                            <label for="receipt" class="lh-1">收據</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="passbook" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.存摺 == true ? "checked" : "") />
+                            <label for="passbook" class="lh-1">存摺</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="employment-certificate" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.任職證明 == true ? "checked" : "") />
+                            <label for="employment-certificate" class="lh-1">任職證明</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="transaction-document" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.交易證明文件 == true ? "checked" : "") />
+                            <label for="transaction-document" class="lh-1">交易證明文件</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="real-estate-deed" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.不動產權狀 == true ? "checked" : "") />
+                            <label for="real-estate-deed" class="lh-1">不動產權狀</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="business-card" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.名片 == true ? "checked" : "") />
+                            <label for="business-card" class="lh-1">名片</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center flex-wrap mb-1">
+                        <div class="flex items-center" style="width: 13.3%;">
+                            <input type="checkbox" id="insurance-policy" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.保單 == true ? "checked" : "") />
+                            <label for="insurance-policy" class="lh-1">保單</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="utility-bills" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.取得寄送客戶所提供地址之水電電話費等資料 == true ? "checked" : "") />
+                            <label for="utility-bills" class="lh-1">取得寄送客戶所提供地址之水/電/電話費等資料</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center flex-wrap mb-1">
+                        <div class="flex items-center" style="width: 26.5%;">
+                            <input type="checkbox" id="labor-insurance-details" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.勞保局投保明細 == true ? "checked" : "") />
+                            <label for="labor-insurance-details" class="lh-1">勞保局投保明細</label>
+                        </div>
+                        <div class="flex items-center" style="width: 19.3%;">
+                            <input type="checkbox" id="employee-id" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.員工證 == true ? "checked" : "") />
+                            <label for="employee-id" class="lh-1">員工證</label>
+                        </div>
+                        <div class="flex items-center text-red" style="position: relative;">
+                            <input type="checkbox" id="appointment-letter" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項.聘書 == true ? "checked" : "") />
+                            <label for="appointment-letter" class="lh-1">聘書</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="other-wealth-documents" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.選項?.其他可證明財富及資金來源之文件 == true ? "checked" : "") />
+                        <label for="other-wealth-documents" class="lh-1">其他可證明財富及資金來源之文件：
+                            <span class="underline-text" style="min-width: 225px">
+                                @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.文件驗證?.其他可證明財富及資金來源之文件)
+                            </span>(必填)
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-table-title fw-bold text-center" width="7.5%" style="padding: 0px 1px; vertical-align: middle;">非文件驗證</td>
+                <td style="padding: 2px;" colspan="3"">
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="face-to-face-interview" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.非文件驗證?.方式.Contains("客戶面對面訪談")==true ? "checked" : "") />
+                        <label for="face-to-face-interview" class="lh-1">客戶面對面訪談</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="phone-verification" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.非文件驗證?.方式.Contains("辦理電話訪查")==true ? "checked" : "") />
+                        <label for="phone-verification" class="lh-1">辦理電話訪查</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="on-site-verification" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.非文件驗證?.方式?.Contains("辦理實地訪查")==true ? "checked" : "") />
+                        <label for="on-site-verification" class="lh-1">辦理實地訪查</label>
+                    </div>
+                    <div class="flex flex-wrap">
+                        <div>連絡電話/訪查地址/內容：</div>
+                        <div class="multi-line-field">@Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.非文件驗證?.連絡電話訪查地址內容</div>
+                    </div>
+                    <p>(內容至少填寫15字以上)</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding: 0px 1px;border-bottom: 3px double black;">
+                    <p class="fw-bold">依據客戶前開文件/非文件驗證資料或說明，判斷財富及資金來源是否合理:</p>
+                    <div class="flex items-center">
+                        <div class="flex items-center mb-1" style="width: 7.5%">
+                            <input type="checkbox" id="wealth-source-reasonable" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.判斷財富及資金來源是否合理?.是否合理 == "是" ? "checked" : "") />
+                            <label for="wealth-source-reasonable" class="lh-1">是</label>
+                        </div>
+                        <div class="flex items-center mb-1">
+                            <input type="checkbox" id="wealth-source-unreasonable" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.判斷財富及資金來源是否合理?.是否合理 == "否" ? "checked" : "") />
+                            <label for="wealth-source-unreasonable" class="lh-1">否，原因: </label>
+                        </div>
+                    </div>
+                    <div class="multi-line-field2">@Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.一了解客戶財富及資金來源?.判斷財富及資金來源是否合理?.否_原因</div>
+                    <p style="font-size: 13.7px;">(若客戶之財富及資金來源欠缺合理性，應要求於期限內補提佐證資料，或應婉拒建立業務關係)</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="14%" rowspan="8" class="bg-table-title fw-bold" style="padding-left: 4px; padding-right: 4px; vertical-align: middle;">
+                    二、客戶預期帳戶使用狀況及資金流向
+                </td>
+                <td colspan="4" class="bg-table-title fw-bold" style="padding: 0px 1px;">1.預期每月入帳金額與次數(買入)</td>
+            </tr>
+            <tr>
+                <td width="43.04%" colspan="2" style="padding: 3px;">
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-inflow-100k-below" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.金額選擇 == "10萬元(含)以下" ? "checked" : "") />
+                        <label for="monthly-inflow-100k-below" class="lh-1">10 萬元(含)以下</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-inflow-100k-500k" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.金額選擇 == "10萬元至50萬元(含)" ? "checked" : "") />
+                        <label for="monthly-inflow-100k-500k" class="lh-1">10 萬元至 50 萬元(含)</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-inflow-500k-2m" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.金額選擇 == "50萬元至200萬元(含)" ? "checked" : "") />
+                        <label for="monthly-inflow-500k-2m" class="lh-1">50 萬元至 200 萬元(含)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="monthly-inflow-2m-above" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.金額選擇 == "200萬元以上" ? "checked" : "") />
+                        <label for="monthly-inflow-2m-above" class="lh-1">200 萬元以上</label>
+                    </div>
+                </td>
+                <td width="50%" colspan="2" style="padding: 3px;">
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-inflow-frequency-10-below" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.次數選擇 == "10次以下" ? "checked" : "") />
+                        <label for="monthly-inflow-frequency-10-below" class="lh-1">10 次以下</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-inflow-frequency-11-50" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.次數選擇 == "11次至50次" ? "checked" : "") />
+                        <label for="monthly-inflow-frequency-11-50" class="lh-1">11 次至 50 次</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-inflow-frequency-51-100" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.次數選擇 == "51次至100次" ? "checked" : "")/>
+                        <label for="monthly-inflow-frequency-51-100" class="lh-1">51 次至 100 次</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="monthly-inflow-frequency-101-above" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.次數選擇 == "101次以上" ? "checked" : "")/>
+                        <label for="monthly-inflow-frequency-101-above" class="lh-1">101 次以上</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding: 3px;">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="monthly-inflow-not-applicable"  @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._1預期每月入帳金額與次數買入?.依其性質無法提供如信用卡證券票債券保管箱保險財管及授信業務等業務 == true ? "checked" : "")/>
+                        <label for="monthly-inflow-not-applicable" class="lh-1">依其性質無法提供(如信用卡、證券、票債券、保管箱、保險、財管及授信業務等業務)</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="bg-table-title fw-bold" style="padding: 0px 1px;">2.預期每月出帳金額與次數(賣出)</td>
+            </tr>
+            <tr>
+                <td width="43.04%" colspan="2" style="padding: 3px;">
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-outflow-100k-below" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.金額選擇 == "10萬元(含)以下" ? "checked" : "")/>
+                        <label for="monthly-outflow-100k-below" class="lh-1">10 萬元(含)以下</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-outflow-100k-500k"  @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.金額選擇 == "10萬元至50萬元(含)" ? "checked" : "")/>
+                        <label for="monthly-outflow-100k-500k" class="lh-1">10 萬元至 50 萬元(含)</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-outflow-500k-2m" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.金額選擇 == "50萬元至200萬元(含)" ? "checked" : "")/>
+                        <label for="monthly-outflow-500k-2m" class="lh-1">50 萬元至 200 萬元(含)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="monthly-outflow-2m-above" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.金額選擇 == "200萬元以上" ? "checked" : "")/>
+                        <label for="monthly-outflow-2m-above" class="lh-1">200 萬元以上</label>
+                    </div>
+                </td>
+                <td width="50%" colspan="2" style="padding: 3px;">
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-outflow-frequency-10-below" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.次數選擇 == "10次以下" ? "checked" : "")/>
+                        <label for="monthly-outflow-frequency-10-below" class="lh-1">10 次以下</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-outflow-frequency-11-50" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.次數選擇 == "11次至50次" ? "checked" : "")/>
+                        <label for="monthly-outflow-frequency-11-50" class="lh-1">11 次至 50 次</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="monthly-outflow-frequency-51-100" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.次數選擇 == "51次至100次" ? "checked" : "")/>
+                        <label for="monthly-outflow-frequency-51-100" class="lh-1">51 次至 100 次</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="monthly-outflow-frequency-101-above" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.次數選擇 == "101次以上" ? "checked" : "")/>
+                        <label for="monthly-outflow-frequency-101-above" class="lh-1">101 次以上</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding: 3px;">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="monthly-outflow-not-applicable" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._2預期每月出帳金額與次數賣出.依其性質無法提供如信用卡證券票債券保管箱保險財管及授信業務等業務 == true ? "checked" : "")/>
+                        <label for="monthly-outflow-not-applicable" class="lh-1">依其性質無法提供(如信用卡、證券、票債券、保管箱、保險、財管及授信業務等業務)</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="bg-table-title fw-bold" style="padding: 0px 1px;">3.預期資金流向</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="padding: 3px;">
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="domestic-flow" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._3預期資金流向?.流向選擇 == "境內" ? "checked" : "") />
+                        <label for="domestic-flow" class="lh-1">境內</label>
+                    </div>
+                    <div class="flex items-center mb-1">
+                        <input type="checkbox" id="overseas-flow" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._3預期資金流向?.流向選擇 == "境外" ? "checked" : "") />
+                        <label for="overseas-flow" class="lh-1">境外，預計主要往來國家
+                            <span class="underline-text" style="min-width: 255px">@(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._3預期資金流向?.境外國家)</span>(必填)
+                        </label>
+                    </div>
+                    <div class="flex items-center">
+                        <p style="margin-left: 65px; margin-right: 8px;">判斷其交易對手/往來國家是否為<span style="display: inline-block; border: 1px solid black;">高風險地域國家</span>:</p>
+                        <div class="flex items-center" style="width: 8%;">
+                            <input type="checkbox" id="high-risk-country-yes" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._3預期資金流向?.是否為高風險地域國家 == "是" ? "checked" : "") />
+                            <label for="high-risk-country-yes" class="lh-1">是</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="high-risk-country-no" @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._3預期資金流向?.是否為高風險地域國家 == "否" ? "checked" : "") />
+                            <label for="high-risk-country-no" class="lh-1">否</label>
+                        </div>
+                    </div>
+                    <p style="margin-left: 65px;">(查詢路徑：表單規章-防制洗錢及打擊資恐作業-<span class="bg-yellow" style="display: inline-block; padding: 1px;">洗錢暨資恐高風險國家名單)</span></p>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="fund-flow-not-applicable"  @(Model?.貳確認客戶身分加強審查事項高風險客戶填寫及資料驗證?.二客戶預期帳戶使用狀況及資金流向?._3預期資金流向?.依其性質無法提供如信用卡證券票債券保管箱保險及財管業務等業務 == true ? "checked" : "")/>
+                        <label for="fund-flow-not-applicable" class="lh-1">依其性質無法提供(如信用卡、證券、票債券、保管箱、保險、財管及授信業務等業務)</label>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- 參、 簽核 -->
+        <h2 class="h2Title fw-bold lh-1_5" style="margin-left: 2px;">參、簽核</h2>
+        <table class="border-table">
+            <tbody>
+                <tr>
+                    <td rowspan="2" class="bg-table-title fw-bold" width="12.5%" style="border-bottom: 3px double black;">審查意見</td>
+                    <td style="padding: 3px 12px;" width="21%">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="suggestion-yes" @(Model?.參簽核?.審查意見 == "建議核准" ? "checked" : "") />
+                            <label for="suggestion-yes" class="lh-1">建議核准</label>
+                        </div>
+                    </td>
+                    <td colspan="3" rowspan="2" style="padding: 1px 6px;vertical-align: middle; border-bottom: 3px double black;">備註：@Model?.參簽核?.備註</td>
+                </tr>
+                <tr>
+                    <td style="padding: 3px 12px;border-bottom: 3px double black;">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="suggestion-no" @(Model?.參簽核?.審查意見 == "建議婉拒" ? "checked" : "") />
+                            <label for="suggestion-no" class="lh-1">建議婉拒</label>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 4px 5px; vertical-align: middle;">經辦簽核：@Model?.參簽核?.經辦簽核</td>
+                    <td rowspan="2" style="padding: 2px 6px;" width="17%">
+                        <p class="text-red">覆核： @Model?.參簽核?.覆核</p>
+                    </td>
+                    <td rowspan="2" style="padding: 1px 6px;" width="27%">
+                        <p>防制洗錢及打擊資恐督導主管簽核： @Model?.參簽核?.防制洗錢及打擊資恐督導主管簽核</p>
+                    </td>
+                    <td rowspan="2" style="padding: 1px 6px;" width="22.5%">
+                        <p>主管簽核： @Model?.參簽核?.主管簽核</p>
+                        <p class="fw-bold">(限高風險客戶)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 1px 5px; vertical-align: middle;">
+                        <p>日期：@Model?.參簽核?.日期</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>本表填寫完成並經主管簽核後，表格及附件應與客戶開戶文件或其他建立業務關係之契約/申請書一併歸檔保存至少 5 年。</p>
+        <div class="footer-text">03-05-F02新建立業務關係/加開帳戶加強審查執行表-自然人110.05版</div>
+        </div>
+    </div>
+</body>
+</html>

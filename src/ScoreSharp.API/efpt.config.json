@@ -1,0 +1,425 @@
+﻿{
+  "CodeGenerationMode": 4,
+  "ContextClassName": "\\ScoreSharpContext",
+  "ContextNamespace": null,
+  "FilterSchemas": false,
+  "IncludeConnectionString": false,
+  "ModelNamespace": "",
+  "OutputContextPath": "Infrastructures/Data",
+  "OutputPath": "Infrastructures/Data/Entities",
+  "PreserveCasingWithRegex": true,
+  "ProjectRootNamespace": "ScoreSharp.API",
+  "Schemas": null,
+  "SelectedHandlebarsLanguage": 2,
+  "SelectedToBeGenerated": 0,
+  "T4TemplatePath": "",
+  "Tables": [
+    {
+      "Name": "[dbo].[Auth_Action]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_ObligedAssignmentCardStatus_Role]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_ReviewerPermission]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_Role]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_Role_Router_Action]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_Router]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_RouterCategory]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Auth_User_Role]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OrgSetUp_Organize]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OrgSetUp_User]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OrgSetUp_UserOrgCaseSetUp]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[OrgSetUp_UserTakeVacation]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Report_BatchReportDownload]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyCreditCardInfoFile]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyCreditCardInfoHandle]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyCreditCardInfoMain]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyCreditCardInfoProcess]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyCreditCardInfoQueryLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyCreditCardInfoSupplementary]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyFileAttachment]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ApplyNote]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_BankInternalSameLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_BankTrace]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_CardHolderChangeLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_CardRecord]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_CaseStatistics]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_CheckTrace]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_FinanceCheckInfo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_InternalCommunicate]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_OutsideBankInfo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_ReviewerSummary]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer_Stakeholder]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_929Log]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_BranchCusCAD]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_BranchCusCD]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_BranchCusCreditOver]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_BranchCusCusInfo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_BranchCusDD]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_BranchCusWMCust]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_FledLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_FrdIdLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_ImmiLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_KYCQueryLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_LayOffLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_MissingPersonsLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_NameCheckLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_PunishLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_RiskAccountLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_WarnCompLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Reviewer3rd_WarnLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ReviewerPedding_PaperApplyCardCheckJob]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ReviewerPedding_WebApplyCardCheckJobForA02]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ReviewerPedding_WebApplyCardCheckJobForNotA02]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ReviewerPedding_WebRetryCase]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_AddressInfo]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_AMLJobLevel]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_AMLProfession]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_AnnualFeeCollectionMethod]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_ApplicableInterestRateLimit]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_ApplicationCategory]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_ApplicationCategory_Card]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_BillDay]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_BlackListReason]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_Card]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_Card_CardPromotion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_CardPromotion]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_Citizenship]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_CreditCheckCode]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_EUCountry]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_EUSanctionCountry]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_FixTime]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_HighFinancialSecrecyCountry]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_HighRiskCountry]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_IDCardRenewalLocation]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_InternalIP]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_LongTermReason]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_MainIncomeAndFund]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_MakeCardFailedReason]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_ProjectCode]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_PromotionUnit]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_RejectionReason]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_SupplementReason]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_Template]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_TemplateFixContent]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_UNSanctionCountry]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SetUp_WorkDay]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SysParamManage_BatchSet]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SysParamManage_MailSet]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SysParamManage_SysParam]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[System_DeleteLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[System_ErrorLog]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[View_ApplicationCategoryJoinCard]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_CardJoinCardPromotion]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_WebDigist]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[Usp_GetApplyCreditCardInfoWithParams]",
+      "ObjectType": 1
+    }
+  ],
+  "UiHint": null,
+  "UncountableWords": null,
+  "UseAsyncStoredProcedureCalls": true,
+  "UseBoolPropertiesWithoutDefaultSql": false,
+  "UseDatabaseNames": true,
+  "UseDatabaseNamesForRoutines": true,
+  "UseDateOnlyTimeOnly": true,
+  "UseDbContextSplitting": false,
+  "UseDecimalDataAnnotationForSprocResult": true,
+  "UseFluentApiOnly": true,
+  "UseHandleBars": false,
+  "UseHierarchyId": false,
+  "UseInflector": false,
+  "UseInternalAccessModifiersForSprocsAndFunctions": false,
+  "UseLegacyPluralizer": false,
+  "UseManyToManyEntity": false,
+  "UseNoDefaultConstructor": false,
+  "UseNoNavigations": false,
+  "UseNoObjectFilter": false,
+  "UseNodaTime": false,
+  "UseNullableReferences": true,
+  "UsePrefixNavigationNaming": false,
+  "UseSchemaFolders": false,
+  "UseSchemaNamespaces": false,
+  "UseSpatial": false,
+  "UseT4": true,
+  "UseT4Split": false
+}

@@ -1,0 +1,341 @@
+﻿<#@ template hostSpecific="true" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Design" #>
+<#@ assembly name="Microsoft.EntityFrameworkCore.Relational" #>
+<#@ assembly name="Microsoft.Extensions.DependencyInjection.Abstractions" #>
+<#@ parameter name="EntityType" type="Microsoft.EntityFrameworkCore.Metadata.IEntityType" #>
+<#@ parameter name="Options" type="Microsoft.EntityFrameworkCore.Scaffolding.ModelCodeGenerationOptions" #>
+<#@ parameter name="NamespaceHint" type="System.String" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore" #>
+<#@ import namespace="Microsoft.EntityFrameworkCore.Design" #>
+<#@ import namespace="Microsoft.Extensions.DependencyInjection" #>
+<#
+    // Template version: 800 - please do NOT remove this line
+    if (EntityType.IsSimpleManyToManyJoinEntityType())
+    {
+        // Don't scaffold these
+        return "";
+    }
+
+    var renames = new List<(string EntityTypeName, string PropertyName, string NewPropertyName)>
+    {
+        ("PlatformIdentifierMapping", "PlatformPlatformType", "DestinationPlatform"),
+        ("PlatformIdentifierMapping", "PlatformPlatformTypeNavigation", "SourcePlatform"),
+    };
+
+    var enumList = new List<(string EntityTypeName, string PropertyName, string? EnumType)>();
+    // add your enums here:
+    enumList.Add( ("SetUp_Card", "SampleRejectionLetter", "SampleRejectionLetter") );
+    enumList.Add( ("SetUp_Card", "CardCategory", "CardCategory") );
+    enumList.Add( ("SetUp_Card", "SaleLoanCategory", "SaleLoanCategory") );
+
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "UserType", "UserType") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "CardStatus", "CardStatus") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "ApplyCardKind", "ApplyCardKind?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "CaseChangeAction", "CaseChangeAction?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "SupplementSendCardAddr", "MailingAddressType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "RejectionSendCardAddr", "MailingAddressType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoHandle", "CardStep", "CardStep?") );
+    
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "Sex", "Sex?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "IDTakeStatus", "IDTakeStatus?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "BirthCitizenshipCode", "BirthCitizenshipCode?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "MarriageState", "MarriageState?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "Education", "Education?"));
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "LiveAddressType", "LiveAddressType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "BillAddressType", "BillAddressType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "SendCardAddressType", "SendCardAddressType?") ); 
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "LiveOwner", "LiveOwner?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "ResignPEPKind", "ResignPEPKind?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "PEPRange", "PEPRange?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "CompTrade", "CompTrade?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "CompJobLevel", "CompJobLevel?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "ParentLiveAddressType", "ParentLiveAddressType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "StudentApplicantRelationship", "StudentApplicantRelationship?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "BillType", "BillType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "AutoDeductionPayType", "AutoDeductionPayType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "UserType", "UserType") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "AcceptType", "AcceptType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "CardOwner", "CardOwner?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "Source", "Source") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "EcardAttachmentNotes", "AttachmentNotes?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "IDType", "IDType?") ); 
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoMain", "CaseType", "CaseType") );
+
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoAddress", "AddressType", "AddressType") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoAddress", "UserType", "UserType") );
+    enumList.Add( ("Reviewer_ApplyNote", "UserType", "UserType") );
+    enumList.Add( ("Reviewer_OutsideBankInfo", "Type", "UserType") );
+
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoFile", "Type", "ApplyFileType") );
+
+   enumList.Add( ("Reviewer_SameIPCheckDetail", "CurrentUserType", "UserType") );
+   enumList.Add( ("Reviewer_SameIPCheckDetail", "SameCardStatus", "CardStatus") );
+   enumList.Add( ("Reviewer_SameWebCaseEmailCheckDetail", "CurrentUserType", "UserType") );
+   enumList.Add( ("Reviewer_SameWebCaseEmailCheckDetail", "SameCardStatus", "CardStatus") );
+   enumList.Add( ("Reviewer_SameWebCaseMobileCheckDetail", "CurrentUserType", "UserType") );
+   enumList.Add( ("Reviewer_SameWebCaseMobileCheckDetail", "SameCardStatus", "CardStatus") );
+
+   enumList.Add( ("Reviewer3rd_929Log", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_WarnLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_BranchCusCusInfo", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_BranchCusWMCust", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_BranchCusCD", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_BranchCusDD", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_BranchCusCAD", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_BranchCusCreditOver", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_WarnCompLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_RiskAccountLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_FledLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_PunishLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_ImmiLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_MissingPersonsLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_FrdIdLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_LayOffLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer3rd_NameCheckLog", "UserType", "UserType") );
+
+   enumList.Add( ("Reviewer_BankTrace", "UserType", "UserType") );
+   enumList.Add( ("Reviewer_BankTrace", "InternalEmailSame_Relation", "SameDataRelation?") );
+   enumList.Add( ("Reviewer_BankTrace", "InternalMobileSame_Relation", "SameDataRelation?") );
+   enumList.Add( ("Report_BatchReportDownload", "ReportType", "ReportType") );
+
+   enumList.Add( ("Reviewer_FinanceCheckInfo", "UserType", "UserType") );
+
+   enumList.Add( ("Reviewer_CheckTrace", "CheckType", "CheckTraceType") );
+   enumList.Add( ("Reviewer_CheckTrace", "CurrentUserType", "UserType") );
+
+   enumList.Add( ("System_ErrorLog", "SendStatus", "SendStatus") );
+
+   enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckName", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsQueryBranchInfo", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheck929", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckSameIP", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckEqualInternalIP", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsChecked", "CaseCheckedStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckSameWebCaseEmail", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckSameWebCaseMobile", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckFocus", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckShortTimeID", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsRetryApplication", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsRetryAppendix", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckInternalEmail", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckInternalMobile", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForNotA02", "IsCheckRepeatApply", "CaseCheckStatus") );
+
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsQueryOriginalCardholderData", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheck929", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckInternalEmail", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckInternalMobile", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckSameIP", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckEqualInternalIP", "CaseCheckStatus") );
+
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckSameWebCaseEmail", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckSameWebCaseMobile", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckFocus", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckShortTimeID", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsInsertKYC", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsBlackList", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsChecked", "CaseCheckedStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsRetryApplication", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsRetryAppendix", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_WebApplyCardCheckJobForA02", "IsCheckRepeatApply", "CaseCheckStatus") );
+
+
+   enumList.Add( ("Reviewer_BankInternalSameLog", "UserType", "UserType") );
+   enumList.Add( ("Reviewer_BankInternalSameLog", "CheckType", "BankInternalSameCheckType") );
+
+    enumList.Add( ("ReviewerLog_GuoLuKaCheckFail", "SendStatus", "SendStatus") );
+
+    
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsQueryOriginalCardholderData", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheckName", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsQueryBranchInfo", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheck929", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheckFocus", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheckShortTimeID", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheckInternalEmail", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheckInternalMobile", "CaseCheckStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsChecked", "CaseCheckedStatus") );
+    enumList.Add( ("ReviewerPedding_PaperApplyCardCheckJob", "IsCheckRepeatApply", "CaseCheckStatus") );
+
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "Sex", "Sex?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "MarriageState", "MarriageState?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "ApplicantRelationship", "ApplicantRelationship?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "IDTakeStatus", "IDTakeStatus?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "BirthCitizenshipCode", "BirthCitizenshipCode?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "UserType", "UserType") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "ResidenceType", "ResidenceType?") );
+    enumList.Add( ("Reviewer_ApplyCreditCardInfoSupplementary", "ShippingCardAddressType", "ShippingCardAddressType?") );
+
+    enumList.Add( ("Reviewer3rd_KYCQueryLog", "KYCLastSendStatus","KYCLastSendStatus") );
+
+    enumList.Add( ("Reviewer_CaseStatistics", "CaseType", "CaseStatisticType") );
+
+    enumList.Add( ("Reviewer_FinanceCheckInfo", "KYC_StrongReStatus", "KYCStrongReStatus?") );
+
+    enumList.Add( ("Reviewer_ApplyFile", "FileType", "FileType") );
+    
+    var services = (IServiceProvider)Host;
+    var annotationCodeGenerator = services.GetRequiredService<IAnnotationCodeGenerator>();
+    var code = services.GetRequiredService<ICSharpHelper>();
+
+    var usings = new List<string>
+    {
+        "System",
+        "System.Collections.Generic"
+    };
+
+    if (Options.UseDataAnnotations)
+    {
+        usings.Add("System.ComponentModel.DataAnnotations");
+        usings.Add("System.ComponentModel.DataAnnotations.Schema");
+        usings.Add("Microsoft.EntityFrameworkCore");
+    }
+
+    if (!string.IsNullOrEmpty(NamespaceHint))
+    {
+#>
+namespace <#= NamespaceHint #>;
+
+<#
+    }
+
+    if (!string.IsNullOrEmpty(EntityType.GetComment()))
+    {
+#>
+/// <summary>
+/// <#= code.XmlComment(EntityType.GetComment()) #>
+/// </summary>
+<#
+    }
+
+    if (Options.UseDataAnnotations)
+    {
+        foreach (var dataAnnotation in EntityType.GetDataAnnotations(annotationCodeGenerator))
+        {
+#>
+<#= code.Fragment(dataAnnotation) #>
+<#
+        }
+    }
+#>
+public partial class <#= EntityType.Name #>
+{
+<#
+    var firstProperty = true;
+    foreach (var property in EntityType.GetProperties().OrderBy(p => p.GetColumnOrder() ?? -1))
+    {
+        if (!firstProperty)
+        {
+            WriteLine("");
+        }
+
+        if (!string.IsNullOrEmpty(property.GetComment()))
+        {
+#>
+    /// <summary>
+    /// <#= code.XmlComment(property.GetComment(), indent: 1) #>
+    /// </summary>
+<#
+        }
+
+        if (Options.UseDataAnnotations)
+        {
+            var dataAnnotations = property.GetDataAnnotations(annotationCodeGenerator)
+                .Where(a => !(a.Type == typeof(RequiredAttribute) && Options.UseNullableReferenceTypes && !property.ClrType.IsValueType));
+            foreach (var dataAnnotation in dataAnnotations)
+            {
+#>
+    <#= code.Fragment(dataAnnotation) #>
+<#
+            }
+        }
+
+        usings.AddRange(code.GetRequiredUsings(property.ClrType));
+
+        var enumTuple = enumList.SingleOrDefault(t => t.EntityTypeName == EntityType.Name && t.PropertyName == property.Name);
+        var propertyType = enumTuple.EnumType ?? code.Reference(property.ClrType);
+        var needsNullable = Options.UseNullableReferenceTypes && property.IsNullable && !property.ClrType.IsValueType;
+        var needsInitializer = Options.UseNullableReferenceTypes && !property.ClrType.IsValueType && !property.IsNullable && enumTuple.EnumType == null;
+#>
+    public <#= propertyType #><#= needsNullable ? "?" : "" #> <#= property.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
+<#
+        firstProperty = false;
+    }
+
+    foreach (var navigation in EntityType.GetNavigations())
+    {
+        WriteLine("");
+
+        if (Options.UseDataAnnotations)
+        {
+            foreach (var dataAnnotation in navigation.GetDataAnnotations(annotationCodeGenerator))
+            {
+#>
+    <#= code.Fragment(dataAnnotation) #>
+<#
+            }
+        }
+
+        var targetType = navigation.TargetEntityType.Name;
+        var renameTuple = renames.SingleOrDefault(t => t.EntityTypeName == EntityType.Name && t.PropertyName == navigation.Name);
+        var navigationName = renameTuple.NewPropertyName ?? navigation.Name;
+        if (navigation.IsCollection)
+        {
+#>
+    public virtual ICollection<<#= targetType #>> <#=navigationName #> { get; set; } = new List<<#= targetType #>>();
+<#
+        }
+        else
+        {
+            var needsNullable = Options.UseNullableReferenceTypes && !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
+            var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired && navigation.IsOnDependent;
+#>
+    public virtual <#= targetType #><#= needsNullable ? "?" : "" #> <#= navigationName #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
+<#
+        }
+    }
+
+    foreach (var skipNavigation in EntityType.GetSkipNavigations())
+    {
+        WriteLine("");
+
+        if (Options.UseDataAnnotations)
+        {
+            foreach (var dataAnnotation in skipNavigation.GetDataAnnotations(annotationCodeGenerator))
+            {
+#>
+    <#= code.Fragment(dataAnnotation) #>
+<#
+            }
+        }
+#>
+    public virtual ICollection<<#= skipNavigation.TargetEntityType.Name #>> <#= skipNavigation.Name #> { get; set; } = new List<<#= skipNavigation.TargetEntityType.Name #>>();
+<#
+    }
+#>
+}
+<#
+    var previousOutput = GenerationEnvironment;
+    GenerationEnvironment = new StringBuilder();
+
+#>
+// <auto-generated> This file has been auto generated by EF Core Power Tools. </auto-generated>
+#nullable enable
+<#
+
+    foreach (var ns in usings.Distinct().OrderBy(x => x, new NamespaceComparer()))
+    {
+#>
+using <#= ns #>;
+<#
+    }
+
+    WriteLine("");
+
+    GenerationEnvironment.Append(previousOutput);
+#>
